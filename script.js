@@ -35,4 +35,15 @@ function addTask(event) {
 
     // Append list-item div to the list
     todoList.appendChild(listDiv);
+
+    checkbox.addEventListener("change", removeTask);
+    
+}
+
+
+function removeTask(event) {
+    let checkboxClicked = event.target.id;
+    let taskNumber = checkboxClicked.charAt(8);
+    console.log(taskNumber);
+
 }
