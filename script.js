@@ -44,6 +44,12 @@ function addTask(event) {
 function removeTask(event) {
     let checkboxClicked = event.target.id;
     let taskNumber = checkboxClicked.charAt(8);
-    console.log(taskNumber);
+    let currentTask ="task";
+    currentTask+=taskNumber;
+    console.log(currentTask);
 
+    let todoList = document.getElementById("todo-list");
+    let taskRemoved = document.getElementById(currentTask);
+
+    todoList.removeChild(taskRemoved);
 }
