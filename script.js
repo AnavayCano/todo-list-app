@@ -5,15 +5,23 @@ function addTask(event) {
     let textbox = document.getElementById("task-input");
     let task = textbox.value;
 
-    // Create list item 
+    createTaskDiv();
 
+    // Save task to local storage
+    localStorage.setItem(taskDiv.id, task);
+
+    console.log(localStorage.length);
+}
+
+function createTaskDiv(task) {
+    // Create a list item
     // Get todo-list container
     let todoList = document.getElementById("todo-list");
 
     // Create list-item div
-    let listDiv = document.createElement("div");
-    listDiv.id = "task" + todoList.childElementCount;
-    listDiv.classList.add("list-item");
+    let taskDiv = document.createElement("div");
+    taskDiv.id = "task" + todoList.childElementCount;
+    taskDiv.classList.add("list-item");
 
     // Create checkbox
     let checkbox = document.createElement("input");
@@ -27,13 +35,13 @@ function addTask(event) {
     label.innerText = task;
 
     // Append check box to list-item div
-    listDiv.appendChild(checkbox);
+    taskDiv.appendChild(checkbox);
 
     // Append label to div
-    listDiv.appendChild(label);
+    taskDiv.appendChild(label);
 
     // Append list-item div to the list
-    todoList.appendChild(listDiv);
+    todoList.appendChild(taskDiv);
 }
 
 
@@ -58,3 +66,19 @@ function removeTask(event) {
         todoList.removeChild(taskRemoved);
     }, 1000);
 }
+
+function loadTasks() {
+    console.log("loading tasks....")
+    // Get each task from local storage
+    for(let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+        let task = localStorage.getItem(key);
+        console.log(task);
+    }
+
+    // Create task divs for each task
+
+    // 
+}
+
+loadTasks();
