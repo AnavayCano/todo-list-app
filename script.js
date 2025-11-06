@@ -40,12 +40,21 @@ function addTask(event) {
 function removeTask(event) {
     // Get id of checkbox
     let checkboxClicked = event.target.id;
+
     // Get id number from the checkbox id
     let taskNumber = checkboxClicked.substring(8);
+
     // Get task div by id
     let taskRemoved = document.getElementById("task" + taskNumber);
+
     // Get container
     let todoList = document.getElementById("todo-list");
+
+    // Apply animation
+    taskRemoved.classList.add("remove-task");
+
     // Remove the task div from the container
-    todoList.removeChild(taskRemoved);
+    setTimeout(function() {
+        todoList.removeChild(taskRemoved);
+    }, 1000);
 }
